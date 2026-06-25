@@ -1,15 +1,15 @@
 {
   "FAQ.md": {
     "title": "FAQ",
-    "order": 11
+    "order": 12
   },
   "ci_cd_pipeline.md": {
     "title": "CI/CD pipeline",
-    "order": 8
+    "order": 9
   },
   "code_overview.md": {
     "title": "Code overview",
-    "order": 9
+    "order": 10
   },
   "compiling.md": {
     "title": "Compiling",
@@ -17,23 +17,27 @@
   },
   "developing.md": {
     "title": "Developing",
-    "order": 10
+    "order": 11
   },
   "domain_generation.md": {
     "title": "Domain generation",
-    "order": 6
+    "order": 7
   },
   "errors.md": {
     "title": "Errors",
-    "order": 12
+    "order": 13
   },
   "forcing_data.md": {
     "title": "Forcing data",
-    "order": 5
+    "order": 6
   },
   "index.md": {
     "title": "Home",
     "order": 0
+  },
+  "mcp.md": {
+    "title": "AI assistant (MCP)",
+    "order": 5
   },
   "namelist_options.md": {
     "title": "Namelist options",
@@ -45,7 +49,7 @@
   },
   "testing.md": {
     "title": "Testing",
-    "order": 7
+    "order": 8
   },
   "tutorial.md": {
     "title": "Tutorial",

@@ -1,0 +1,7 @@
+{
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "dim": 384,
+  "count": 2397,
+  "corpus_hash": "4d6b8c676753e4e821afed915e3bbcfcddd58099767ed7c25837073ff68f925e",
+  "built_at": null
+}
