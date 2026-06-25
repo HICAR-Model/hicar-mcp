@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hicar-mcp"
+version = "0.1.0"
+description = "Model Context Protocol server exposing the HICAR atmospheric model's namelist UI, variable catalog, physics schemes, docs, and code to AI assistants."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "HICAR developers" }]
+keywords = ["mcp", "hicar", "atmospheric-model", "namelist", "llm", "model-context-protocol"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+dependencies = [
+    "mcp>=1.2",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+# Offline semantic search (local embedding model, no API key required).
+semantic = ["sentence-transformers>=2.6", "huggingface-hub>=0.20"]
+# Optional higher-quality API embedders (used only for live index rebuilds).
+api = ["voyageai>=0.2", "openai>=1.0"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+hicar-mcp = "hicar_mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/HICAR-Model/hicar-mcp"
+"HICAR model" = "https://github.com/HICAR-Model/HICAR"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hicar_mcp"]
+# Non-Python files inside the package (the bundled knowledge artifacts under
+# src/hicar_mcp/data) are included automatically; .gitignore keeps them tracked.
+artifacts = ["src/hicar_mcp/data/**"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/hicar_mcp", "tests", "scripts", "examples", "README.md", "LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = ["realmodel: opt-in test that downloads/loads the real embedding model"]

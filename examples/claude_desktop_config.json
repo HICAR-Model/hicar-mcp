@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "hicar": {
+      "command": "hicar-mcp",
+      "args": ["serve"],
+      "comment": "Optional: add an env block with HICAR_REPO to enable live/source-aware mode.",
+      "env": {
+        "HICAR_REPO": "/absolute/path/to/HICAR"
+      }
+    }
+  }
+}

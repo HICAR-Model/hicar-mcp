@@ -1,0 +1,227 @@
+[
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "thompson",
+    "code": 1,
+    "constant": "kMP_THOMPSON",
+    "supported": true,
+    "description": "'Thompson'         = Thompson et al (2008),"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "linear",
+    "code": 2,
+    "constant": "kMP_SB04",
+    "supported": false,
+    "description": "'Linear'           = 'Linear' microphysics (NOT SUPPORTED)"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "morrison",
+    "code": 3,
+    "constant": "kMP_MORRISON",
+    "supported": true,
+    "description": "'Morrison'         = Morrison"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "wsm6",
+    "code": 4,
+    "constant": "kMP_WSM6",
+    "supported": false,
+    "description": "'WSM6'             = WSM6 (NOT SUPPORTED)"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "thompson_aerosol",
+    "code": 5,
+    "constant": "kMP_THOMP_AER",
+    "supported": false,
+    "description": "'Thompson Aerosol' = Thompson Aerosol (NOT SUPPORTED)"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "wsm3",
+    "code": 6,
+    "constant": "kMP_WSM3",
+    "supported": false,
+    "description": "'WSM3'             = WSM3 (NOT SUPPORTED)"
+  },
+  {
+    "category": "microphysics",
+    "selector": "mp",
+    "name": "ishmael",
+    "code": 7,
+    "constant": "kMP_ISHMAEL",
+    "supported": true,
+    "description": "'ISHMAEL'          = ISHMAEL,"
+  },
+  {
+    "category": "pbl",
+    "selector": "pbl",
+    "name": "ysu",
+    "code": 1,
+    "constant": "kPBL_YSU",
+    "supported": true,
+    "description": "'ysu'  = YSU PBL"
+  },
+  {
+    "category": "land_surface",
+    "selector": "lsm",
+    "name": "fluxes",
+    "code": 1,
+    "constant": "kLSM_BASIC",
+    "supported": true,
+    "description": "'fluxes' = Fluxes from forcing data,"
+  },
+  {
+    "category": "land_surface",
+    "selector": "lsm",
+    "name": "noahmp",
+    "code": 2,
+    "constant": "kLSM_NOAHMP",
+    "supported": true,
+    "description": "'noahmp' = Noah MP"
+  },
+  {
+    "category": "radiation",
+    "selector": "rad",
+    "name": "fluxes",
+    "code": 1,
+    "constant": "kRA_BASIC",
+    "supported": true,
+    "description": "'fluxes' = Surface fluxes from forcing data"
+  },
+  {
+    "category": "radiation",
+    "selector": "rad",
+    "name": "simple",
+    "code": 2,
+    "constant": "kRA_SIMPLE",
+    "supported": false,
+    "description": "'simple' = cloud fraction based radiation + radiative cooling (NOT SUPPORTED)"
+  },
+  {
+    "category": "radiation",
+    "selector": "rad",
+    "name": "RRTMG",
+    "code": 3,
+    "constant": "kRA_RRTMG",
+    "supported": true,
+    "description": "'RRTMG'  = RRTMG"
+  },
+  {
+    "category": "radiation",
+    "selector": "rad",
+    "name": "RRTMGP",
+    "code": 4,
+    "constant": "kRA_RRTMGP",
+    "supported": true,
+    "description": "'RRTMGP' = RRTMGP (GPU accelerated)"
+  },
+  {
+    "category": "cumulus",
+    "selector": "conv",
+    "name": "tiedke",
+    "code": 1,
+    "constant": "kCU_TIEDTKE",
+    "supported": true,
+    "description": "'Tiedke' = Tiedke scheme"
+  },
+  {
+    "category": "cumulus",
+    "selector": "conv",
+    "name": "nsas",
+    "code": 2,
+    "constant": "kCU_NSAS",
+    "supported": true,
+    "description": "'NSAS'   = NSAS scheme"
+  },
+  {
+    "category": "cumulus",
+    "selector": "conv",
+    "name": "bmj",
+    "code": 3,
+    "constant": "kCU_BMJ",
+    "supported": true,
+    "description": "'BMJ'    = BMJ scheme"
+  },
+  {
+    "category": "water",
+    "selector": "water",
+    "name": "simple",
+    "code": 1,
+    "constant": "kWATER_SIMPLE",
+    "supported": true,
+    "description": "'simple' = Simple fluxes (uses SST in forcing data, otherwise SST=280\u00b0C),"
+  },
+  {
+    "category": "water",
+    "selector": "water",
+    "name": "lake",
+    "code": 2,
+    "constant": "kWATER_LAKE",
+    "supported": true,
+    "description": "'lake'   = WRF's CLM 4.5 lake model (10-layer; needs lake depth in hi-res data),"
+  },
+  {
+    "category": "water",
+    "selector": "water",
+    "name": "flake",
+    "code": 3,
+    "constant": "kWATER_FLAKE",
+    "supported": true,
+    "description": "'flake'  = FLake bulk lake model (Mironov 2008; 2D state, with ice and sediment)"
+  },
+  {
+    "category": "wind",
+    "selector": "wind",
+    "name": "variational solver",
+    "code": 1,
+    "constant": "kITERATIVE_WINDS",
+    "supported": true,
+    "description": "'variational solver' = Mass-conserving wind solver based on variational calculus technique"
+  },
+  {
+    "category": "advection",
+    "selector": "adv",
+    "name": "standard",
+    "code": 1,
+    "constant": "kADV_STD",
+    "supported": true,
+    "description": "'standard' = standard advection scheme"
+  },
+  {
+    "category": "surface_layer",
+    "selector": "sfc",
+    "name": "RevMM5",
+    "code": 1,
+    "constant": "kSFC_MM5REV",
+    "supported": true,
+    "description": "'RevMM5' = Revised MM5 Monin-Obukhov scheme"
+  },
+  {
+    "category": "snow",
+    "selector": "sm",
+    "name": "snowpack",
+    "code": 2,
+    "constant": "kSM_SNOWPACK",
+    "supported": true,
+    "description": "'snowpack'  = SNOWPACK snow model"
+  },
+  {
+    "category": "snow",
+    "selector": "sm",
+    "name": "FSM2trans",
+    "code": 1,
+    "constant": "kSM_FSM",
+    "supported": true,
+    "description": "'FSM2trans' = FSM2trans snow model (must be compiled, see docs/compiling.md)"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.json",
+  "name": "io.github.HICAR-Model/hicar-mcp",
+  "description": "Structured, AI-queryable knowledge of the HICAR atmospheric model: namelist options, physics schemes, variable catalog, docs and code.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/HICAR-Model/hicar-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "hicar-mcp",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "runtimeArguments": [
+        { "type": "positional", "value": "serve" }
+      ],
+      "environmentVariables": [
+        {
+          "name": "HICAR_REPO",
+          "description": "Optional absolute path to a HICAR checkout; enables live/source-aware mode.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

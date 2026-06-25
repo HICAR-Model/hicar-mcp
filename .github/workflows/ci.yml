@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  test:
+    name: pytest (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --upgrade pip
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
+
+  extraction-parity:
+    name: extraction parity vs real HICAR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out HICAR source
+        uses: actions/checkout@v4
+        with:
+          repository: HICAR-Model/HICAR
+          path: hicar-src
+          ref: develop
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - name: Regenerate (no embeddings) and sanity-check counts
+        run: |
+          python scripts/regenerate.py --repo hicar-src --no-embed --out /tmp/data
+          python - <<'PY'
+          import json, sys
+          v = json.load(open("/tmp/data/schema.json"))
+          n = len(v["options"]); groups = {o["group"] for o in v["options"]}
+          print("options:", n, "groups:", len(groups))
+          assert n >= 250, f"too few options parsed: {n}"
+          assert len(groups) >= 15, f"too few groups: {groups}"
+          schemes = json.load(open("/tmp/data/schemes.json"))
+          assert any(s["name"] == "morrison" and s["code"] == 3 for s in schemes), "morrison/3 missing"
+          print("extraction parity OK")
+          PY

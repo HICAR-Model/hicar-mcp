@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+
+# Note: src/hicar_mcp/data/ (bundled artifacts) IS committed on purpose.
+# Local embedding caches live outside the repo (~/.cache/hicar-mcp).

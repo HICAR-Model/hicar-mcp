@@ -1,0 +1,4 @@
+site_name: HICAR Fixture
+nav:
+  - Home: index.md
+  - Running: running.md

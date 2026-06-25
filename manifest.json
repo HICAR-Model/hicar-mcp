@@ -1,0 +1,30 @@
+{
+  "dxt_version": "0.1",
+  "name": "hicar-mcp",
+  "display_name": "HICAR",
+  "version": "0.1.0",
+  "description": "AI-queryable knowledge of the HICAR atmospheric model: namelist options, physics schemes, variable catalog, docs and code.",
+  "long_description": "Exposes every HICAR namelist option (with types, defaults, allowed values and ranges), the physics-scheme registry, the ~375-variable output catalog, the documentation, and source/semantic code search. Ships with pre-extracted knowledge so it works with zero configuration; set HICAR_REPO for source-aware tools.",
+  "author": { "name": "HICAR developers", "url": "https://github.com/HICAR-Model" },
+  "license": "MIT",
+  "homepage": "https://github.com/HICAR-Model/hicar-mcp",
+  "documentation": "https://github.com/HICAR-Model/hicar-mcp#readme",
+  "server": {
+    "type": "python",
+    "entry_point": "server/main.py",
+    "mcp_config": {
+      "command": "python",
+      "args": ["${__dirname}/server/main.py", "serve"]
+    }
+  },
+  "user_config": {
+    "hicar_repo": {
+      "type": "directory",
+      "title": "HICAR repository (optional)",
+      "description": "Path to a HICAR checkout to enable live/source-aware mode. Leave empty to use bundled knowledge.",
+      "required": false
+    }
+  },
+  "keywords": ["hicar", "atmospheric-model", "namelist", "fortran", "science"],
+  "tools_generated": true
+}

@@ -1,0 +1,64 @@
+name: regenerate-artifacts
+
+# Triggered by the HICAR repo on release (repository_dispatch), or manually.
+on:
+  repository_dispatch:
+    types: [hicar-release]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "HICAR ref (tag/branch/sha) to regenerate from"
+        required: true
+        default: "main"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve HICAR ref
+        id: ref
+        run: |
+          REF="${{ github.event.client_payload.ref || github.event.inputs.ref }}"
+          echo "ref=${REF:-main}" >> "$GITHUB_OUTPUT"
+
+      - name: Check out HICAR @ ref
+        uses: actions/checkout@v4
+        with:
+          repository: HICAR-Model/HICAR
+          ref: ${{ steps.ref.outputs.ref }}
+          path: hicar-src
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install (with semantic extra to build the embedding index)
+        run: pip install -e ".[semantic]"
+
+      - name: Regenerate bundled artifacts + embedding index
+        run: |
+          COMMIT=$(git -C hicar-src rev-parse HEAD)
+          python scripts/regenerate.py \
+            --repo hicar-src \
+            --commit "$COMMIT" \
+            --built-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+      - name: Open PR with refreshed artifacts
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: regen/hicar-${{ steps.ref.outputs.ref }}
+          title: "Regenerate artifacts from HICAR ${{ steps.ref.outputs.ref }}"
+          commit-message: "chore: regenerate bundled artifacts from HICAR ${{ steps.ref.outputs.ref }}"
+          body: |
+            Automated regeneration of `src/hicar_mcp/data` from HICAR
+            `${{ steps.ref.outputs.ref }}`.
+
+            Review the diff, bump the package version if appropriate, then merge to
+            trigger `publish`.
+          add-paths: src/hicar_mcp/data/**
