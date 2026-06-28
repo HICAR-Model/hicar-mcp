@@ -88,6 +88,10 @@ locally:
 hicar-mcp regenerate --repo /path/to/HICAR
 ```
 
-## License
+## MCP Registry
 
-MIT. HICAR itself is licensed separately; see the HICAR repository.
+Published to the official MCP Registry as `io.github.HICAR-Model/hicar-mcp`.
+The line below lets the registry verify that this PyPI package and the registry
+entry have the same owner; do not remove it.
+
+<!-- mcp-name: io.github.HICAR-Model/hicar-mcp -->

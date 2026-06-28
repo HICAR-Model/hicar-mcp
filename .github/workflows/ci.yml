@@ -32,7 +32,7 @@ jobs:
         with:
           repository: HICAR-Model/HICAR
           path: hicar-src
-          ref: develop
+          # no ref -> HICAR's default branch (master); robust to renames
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

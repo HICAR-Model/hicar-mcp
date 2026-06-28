@@ -6,7 +6,7 @@
   "description": "AI-queryable knowledge of the HICAR atmospheric model: namelist options, physics schemes, variable catalog, docs and code.",
   "long_description": "Exposes every HICAR namelist option (with types, defaults, allowed values and ranges), the physics-scheme registry, the ~375-variable output catalog, the documentation, and source/semantic code search. Ships with pre-extracted knowledge so it works with zero configuration; set HICAR_REPO for source-aware tools.",
   "author": { "name": "HICAR developers", "url": "https://github.com/HICAR-Model" },
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/HICAR-Model/hicar-mcp",
   "documentation": "https://github.com/HICAR-Model/hicar-mcp#readme",
   "server": {
